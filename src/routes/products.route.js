@@ -11,7 +11,7 @@ const pmFs = new ProductManagerFS();
 const pmDb = new ProductManagerDb();
 
 // Get all products
-route.get("/", async (req, res) => {
+route.get("/api/products/", async (req, res) => {
   try {
     const fsProducts = await pmFs.getAll();
     const dbProducts = await pmDb.getAll();
@@ -22,7 +22,7 @@ route.get("/", async (req, res) => {
 });
 
 // Get by id
-route.get("/:pid", async (req, res) => {
+route.get("/api/products/:pid", async (req, res) => {
   try {
     const pid=req.params;
     
@@ -35,7 +35,7 @@ route.get("/:pid", async (req, res) => {
 });
 
 // Create product
-route.post("/", async (req, res) => {
+route.post("/api/products/", async (req, res) => {
   try {
     const product = req.body;
     
@@ -49,7 +49,7 @@ route.post("/", async (req, res) => {
 });
 
 // Update product
-route.put("/:pid", async (req, res) => {
+route.put("/api/products/:pid", async (req, res) => {
   try {
     const pid = req.params.pid;
     const updatedProductData = req.body;
@@ -62,7 +62,7 @@ route.put("/:pid", async (req, res) => {
 });
 
 // Delete product
-route.delete("/:pid", async (req, res) => {
+route.delete("/api/products/:pid", async (req, res) => {
   try {
     const pid = req.params.pid;
     const deletedProduct = await pmDb.deleteProduct(pid);

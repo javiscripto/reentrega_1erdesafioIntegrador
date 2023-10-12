@@ -7,11 +7,14 @@ const PORT = 8080;
 
 //middlewares
 app.use(json());
+app.use(express.urlencoded({extended:true}))
 
 //import routes
 import productRoute from "./routes/products.route.js"
+import cartRoute from "./routes/cart.route.js"
 
 app.use("/",productRoute)
+app.use("/", cartRoute)
 
 //handlebars
 // import { engine } from "express-handlebars";

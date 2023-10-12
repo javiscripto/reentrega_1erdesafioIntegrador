@@ -33,7 +33,7 @@ export default class CartManagerFs{
     getById= async(cartId)=>{
         try {
             let cartsJson= JSON.parse(await fs.readFile(this.path,"utf-8"));
-            let cartFind= cartsJson.find((car)=>cartData.id===cartId);
+            let cartFind= cartsJson.find((cart)=>cart._id===cartId);
             cartFind?console.log(cartFind):console.log("no se ha encontrado el carrito")
 
         } catch (error) {
@@ -49,10 +49,3 @@ export default class CartManagerFs{
 
 
 /////////////////////////////////////
-const prueba= new CartManagerFs();
-
-const cartData= {id:1, products:["manzana","pera"]};
-
-prueba.writecart(cartData);
-prueba.getAll();
-prueba.getById(1);
