@@ -1,5 +1,17 @@
 import express,{json}from"express";
 import mongoose from "mongoose";
+
+//seteo trabajo con rutas
+import {fileURLToPath} from "url";
+import path from "path";
+
+const __filename=fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename)
+
+
+
+
+
 const app= express();
 const PORT = 8080;
 
@@ -12,15 +24,17 @@ app.use(express.urlencoded({extended:true}))
 //import routes
 import productRoute from "./routes/products.route.js"
 import cartRoute from "./routes/cart.route.js"
+import messagesRoute from "./routes/messages.route.js"
 
 app.use("/",productRoute)
 app.use("/", cartRoute)
+app.use("/", messagesRoute)
 
 //handlebars
-// import { engine } from "express-handlebars";
-// app.engine("handlebars", engine());
-// app.set("view engine","handlebars")
-// app.set("views",__dirname+`/views`);
+import { engine } from "express-handlebars";
+app.engine("handlebars", engine());
+app.set("view engine","handlebars")
+app.set("views",__dirname+`/views`);
 
 
 
