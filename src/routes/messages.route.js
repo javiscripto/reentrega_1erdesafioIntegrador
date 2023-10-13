@@ -19,7 +19,7 @@ route.post("/messages/", async(req, res)=>{
     try {
         
         let objectMessage= req.body;
-        //console.log(objectMessage)
+        console.log(objectMessage)
         let result = await manager.createMessage(objectMessage);
         console.log(result)
 

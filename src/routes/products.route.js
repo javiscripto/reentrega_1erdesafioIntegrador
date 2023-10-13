@@ -12,9 +12,14 @@ const pmDb = new ProductManagerDb();
 
 // Get all products
 route.get("/api/products/", async (req, res) => {
+
+
+  //queryParams
+  const limit = parseInt(req.query.limit);
+
   try {
-    const fsProducts = await pmFs.getAll();
-    const dbProducts = await pmDb.getAll();
+    const fsProducts = await pmFs.getAll(limit);
+    const dbProducts = await pmDb.getAll(limit);
     res.json({ result: "success", payload: { fsProducts, dbProducts } });
   } catch (error) {
     res.status(500).json({ result: "error", message: error.message });

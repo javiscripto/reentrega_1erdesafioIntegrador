@@ -19,11 +19,11 @@ export default class ProductManagerFS {
     }
   };
 
- getAll = async () => {
+ getAll = async (results) => {
     try {
       let productsJson = JSON.parse(await fs.readFile(this.path, "utf8"));
-      
-      return productsJson;
+      let limit = results||productsJson.length
+      return productsJson.slice(0,limit);
     } catch (error) {
       console.error("error de lectura");
     }

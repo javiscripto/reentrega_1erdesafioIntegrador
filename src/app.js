@@ -19,7 +19,11 @@ const PORT = 8080;
 
 //middlewares
 app.use(json());
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({extended:true}));
+
+
+//set public folder
+app.use(express.static(path.join(__dirname,`public`)));
 
 //import routes
 import productRoute from "./routes/products.route.js"
@@ -37,6 +41,19 @@ app.set("view engine","handlebars")
 app.set("views",__dirname+`/views`);
 
 
+
+
+// route add new product
+
+    //get
+app.get("/add", (req, res)=>{
+    res.sendFile(path.join(__dirname,`public`,`index.html`))
+})
+    //post
+app.post("/add", (req, res)=>{
+    let producto = req.body;
+    console.log(producto)
+})
 
 ///////////////////////////////////  set mongoose conection
 

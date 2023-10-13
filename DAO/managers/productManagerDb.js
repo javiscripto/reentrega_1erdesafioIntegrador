@@ -14,10 +14,11 @@ export default class ProductManagerDb{
         }
     }
 
-    getAll= async()=>{
+    getAll= async(queryLimit)=>{
         try {
             const products = await productModel.find();
-            return products;
+            const limit = queryLimit||products.length
+            return products.slice(0,limit);
           } catch (error) {
             console.error("error",error)
           }

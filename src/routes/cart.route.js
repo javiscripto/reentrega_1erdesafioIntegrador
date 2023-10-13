@@ -31,9 +31,9 @@ route.post("/api/carts/",async(req,res)=>{
 //get all carts
 route.get("/api/carts/", async(req, res)=>{
     try {
-        let result = await cartMdb.getAll();
-        await cartMfs.getAll();
-        res.status(200).json({result: "success", payload: result})
+        let dbcarts = await cartMdb.getAll();
+        let fscarts= await cartMfs.getAll();
+        res.status(200).json({result: "success", payload: {dbcarts,fscarts}})
     } catch (error) {
         console.error("error:",error);
         res.status(500).json({message:"error al cargar los carritos"})
@@ -52,6 +52,17 @@ route.get("/api/carts/:cid/", async(req,res)=>{
     }
 })
 
+//delete productBy ID
+route.get("/api/carts/:cid/products:pid", async(req, res)=>{
+    try {
+        const cid= req.params.cid;
+        const pid= req.params.cid;
+        console.log(cid, pid)
+        
+    } catch (error) {
+        res.status(500).json({result:"error", message: error.message})
+    }
+})
 
 
 export default route;
