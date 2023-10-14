@@ -34,7 +34,11 @@ export default class CartManagerFs{
         try {
             let cartsJson= JSON.parse(await fs.readFile(this.path,"utf-8"));
             let cartFind= cartsJson.find((cart)=>cart._id===cartId);
-            cartFind?console.log(cartFind):console.log("no se ha encontrado el carrito")
+            if(cartFind) {
+                return cartFind
+             } else{
+                console.log("no se ha encontrado el carrito")
+            };
 
         } catch (error) {
             console.error("error de lectura:", error)

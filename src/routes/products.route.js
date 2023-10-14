@@ -39,7 +39,9 @@ route.get("/api/products/:pid", async (req, res) => {
     
     const fsProduct = await pmFs.getById(pid.pid);
     const dbProduct = await pmDb.getById(pid.pid);
-    res.json({ result: "success", payload: {  dbProduct, fsProduct } });
+    //res.json({ result: "success", payload: {  dbProduct, fsProduct } });
+    console.log(fsProduct)
+    res.render("detail", {fsProduct})
   } catch (error) {
     res.status(500).json({ result: "error", message: error.message });
   }

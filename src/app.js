@@ -46,11 +46,11 @@ app.set("views",__dirname+`/views`);
 // route add new product
 
     //get
-app.get("/add", (req, res)=>{
+app.get("/", (req, res)=>{
     res.sendFile(path.join(__dirname,`public`,`index.html`))
 })
     //post
-app.post("/add", (req, res)=>{
+app.post("/", (req, res)=>{
     let producto = req.body;
     console.log(producto)
 })

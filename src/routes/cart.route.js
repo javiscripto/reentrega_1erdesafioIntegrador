@@ -10,7 +10,7 @@ const cartMfs= new CartManagerFs();
 const cartMdb= new CartManagerDb();
 
 
-
+//create cart
 
 route.post("/api/carts/",async(req,res)=>{
     const products=req.body;
@@ -46,7 +46,8 @@ route.get("/api/carts/:cid/", async(req,res)=>{
         const cid=req.params.cid;
         const dbCart= await cartMdb.getById(cid);
         const fsCart= await cartMfs.getById(cid);
-        res.status(200).json({result: "success", payload:{dbCart,fsCart}})
+        //res.status(200).json({result: "success", payload:{dbCart,fsCart}})
+        res.render("cart", {fsCart})
     } catch (error) {
         res.status(500).json({result:"error", message:error.message})
     }

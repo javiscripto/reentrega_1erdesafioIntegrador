@@ -35,7 +35,7 @@ export default class ProductManagerFS {
       let productsJson = JSON.parse(await fs.readFile(this.path, "utf-8"));
       let product = productsJson.find((prod) => prod._id === id);
       if (!product) return "producto no encontrado";
-      console.log(product)
+      return product
     } catch (error) {
       console.error("error de lectura");
     }
