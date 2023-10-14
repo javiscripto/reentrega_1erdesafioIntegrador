@@ -10,17 +10,23 @@ const route = Router();
 const pmFs = new ProductManagerFS();
 const pmDb = new ProductManagerDb();
 
-// Get all products
+
+
+
+
+
+// Get all products // query params
 route.get("/api/products/", async (req, res) => {
 
 
   //queryParams
-  const limit = parseInt(req.query.limit);
-
+  const limit = parseInt(req.query.limit) ;
+  const page= req.query.page
   try {
-    const fsProducts = await pmFs.getAll(limit);
+    const  fsProducts= await pmFs.getAll(limit);
     const dbProducts = await pmDb.getAll(limit);
-    res.json({ result: "success", payload: { fsProducts, dbProducts } });
+    //res.json({ result: "success", payload: { fsProducts, dbProducts } });
+    res.render("home", {fsProducts})
   } catch (error) {
     res.status(500).json({ result: "error", message: error.message });
   }
