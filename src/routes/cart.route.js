@@ -3,8 +3,8 @@ import { Router } from "express";
 const route=Router();
 
 //import managers
-import CartManagerDb from "../../DAO/managers/cartManagerDb.js";
-import CartManagerFs from "../../DAO/managers/cartManagerFs.js";
+import CartManagerDb from "../DAO/managers/cartManagerDb.js";
+import CartManagerFs from "../DAO/managers/cartManagerFs.js";
 
 const cartMfs= new CartManagerFs();
 const cartMdb= new CartManagerDb();

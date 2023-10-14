@@ -1,8 +1,8 @@
 // product.route.js
 
 import { Router } from "express";
-import ProductManagerFS from "../../DAO/managers/productManagerFs.js";
-import ProductManagerDb from "../../DAO/managers/productManagerDb.js";
+import ProductManagerFS from "../DAO/managers/productManagerFs.js";
+import ProductManagerDb from "../DAO/managers/productManagerDb.js";
 
 const route = Router();
 
