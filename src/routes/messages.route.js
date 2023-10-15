@@ -8,7 +8,7 @@ const manager= new MessageManager();
 
 
 
-let arrayPrueba= [{nombre:"jose",correo:"eljose@no.com"}, {nombre:"rola",correo:"elrola@no.cl"}, {nombre:"agu",correo:"elagustin@no"}]
+
 
 route.get("/messages/", async(req, res)=>{
     try {
