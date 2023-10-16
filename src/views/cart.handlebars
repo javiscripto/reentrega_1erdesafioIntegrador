@@ -1,8 +1,10 @@
-<h1>carrito {{fsCart._id}}</h1>
+<h1>Carrito {{id}}</h1>
 
-producto(s):
+Producto(s):
+{{#each products}}
+    <p>Artículo {{@index}}:</p>
 
-{{#each fsCart.products}}
-    <h4> {{title}} </h4>
-    {{!-- <p> {{cuantity}} </p> --}}
+    <p>Cantidad: {{quantity}}</p>
 {{/each}}
+
+
