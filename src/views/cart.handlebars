@@ -2,7 +2,9 @@
 
 Producto(s):
 {{#each products}}
-    <p>Artículo {{@index}}:</p>
+    
+    <h4> {{item.title}} </h4>
+    <p> ${{item.price}} CLP </p>
 
     <p>Cantidad: {{quantity}}</p>
 {{/each}}

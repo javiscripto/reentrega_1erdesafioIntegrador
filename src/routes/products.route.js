@@ -25,6 +25,7 @@ route.get("/api/products/", async (req, res) => {
   try {
     const  fsProducts= await pmFs.getAll(limit);
     const dbProducts = await pmDb.getAll(limit);
+    console.log(dbProducts)
     //res.json({ result: "success", payload: { fsProducts, dbProducts } });
     res.render("home", {fsProducts})
   } catch (error) {
