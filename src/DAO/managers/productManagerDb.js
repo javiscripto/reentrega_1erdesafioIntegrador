@@ -16,7 +16,7 @@ export default class ProductManagerDb{
 
     getAll= async(queryLimit)=>{
         try {
-            const products = await productModel.find();
+            const products = await productModel.find().lean();
             const limit = queryLimit||products.length
             return products.slice(0,limit);
           } catch (error) {
@@ -26,7 +26,8 @@ export default class ProductManagerDb{
 
     getById= async(productId)=>{
         try {
-            const product = await productModel.findById(productId);
+            const product = await productModel.findById(productId).lean();
+            if(!product)return "producto no encontrado"
             return product;
           } catch (error) {
             console.error("error",error)

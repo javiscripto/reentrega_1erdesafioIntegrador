@@ -1,12 +1,13 @@
 <h1>home</h1>
 <h2>list all products</h2>
 <div>
-    {{#each fsProducts}}
+    {{#each dbProducts}}
 
     <div>
         <h3>{{title}}</h3>
         <p> price: ${{price}} </p>
         <p> category: {{cat}} </p>
+        <p>{{_id}}</p>
         
         <a href="/api/products/{{_id}}">detail...</a>
     </div>
